@@ -1,0 +1,30 @@
+#!/bin/bash
+scrot -a "$(slop -f '%x,%y,%w,%h')" -q 100 "/tmp/rgbavgclip.png"
+information="$(rgbavg)"
+
+rgb="${information%% |*}"
+rest1="${information#* |}"
+hsv="${rest1%% |*}"
+rest2="${rest1#* |}"
+hsl="${rest2%% |*}"
+rest3="${rest2#* |}"
+yuv601="${rest3%% |*}"
+rest4="${rest3#* |}"
+b601hs="${rest4%% |*}"
+rest5="${rest4#* |}"
+yuv709="${rest5%% |*}"
+b709hs="${rest5#* |}"
+dunstify "$rgb
+$hsv
+$hsl
+$yuv601
+$b601hs
+$yuv709
+$b709hs
+"
+
+aux="${information#* }"
+rgb="${aux%% |*}"
+printf "%s" "$rgb" | xclip -selection clipboard
+
+rm "/tmp/rgbavgclip.png"
