@@ -8,3 +8,4 @@ The clip-rgb is an example of bash script on how to use the compiled `rgbavg` bi
 - `git clone https://github.com/DomBito/rgbavg.git`
 - `cd rgbavd && cargo build --release`
 - move `cpick-rgb` and `rgbavg` to any of your binary paths and give them execute permissions
+- call `cpick-rgb` to colorpick an area of your screen
